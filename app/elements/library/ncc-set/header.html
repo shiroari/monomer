@@ -1,0 +1,95 @@
+<polymer-element name="x-header" attributes="">
+	<template>
+		<link rel="stylesheet" href="../../bower_components/fontawesome/css/font-awesome.css">
+		<style type="text/css">
+			header {
+				background-color: #fff;
+				line-height: 40px;
+				border-bottom: 2px solid #ddd;
+			}
+			
+			header>div {
+				margin-left: 40px;
+				margin-right: 40px;
+			}
+			
+			a {
+				color: #f49237;
+				text-decoration: none;
+			}
+			
+			ul.bar {
+				margin: 0;
+				padding: 0;
+				list-style-type: none;
+			}
+			
+			ul.bar>li {
+				display: inline-block;
+			}
+			
+			ul.logo {
+				padding: 0 10px;
+			}
+			
+			ul.navmenu {
+				padding: 0 10px;
+			}
+			
+			ul.breadcrums>li {
+				margin: 0;
+			}
+			
+			ul.breadcrumbs>li>a:after {
+				content: "»";
+				margin: 0 0px;
+			}
+			
+			ul.breadcrumbs>li>a:last-child:after {
+				content: "";
+			}
+			
+			ul.breadcrumbs>li>a:before {
+				content: "›";
+				color: #c4c4c4;
+				margin: 0 6px;
+			}
+		</style>
+		<header>
+			<div horizontal layout>
+				<ul class="bar logo">
+					<li>
+						<a href="javascript:void(0)"><i class="fa fa-lg fa-circle"></i></a>
+					</li>
+				</ul>
+				<ul class="bar breadcrumbs" flex>
+					<li>
+						<a href="javascript:void(0)">Root</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)">Branch</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)">Leaf</a>
+					</li>
+				</ul>
+				<ul class="bar navmenu">
+					<li>
+						<a href="javascript:void(0)"><i class="fa fa-lg fa-search"></i></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"><i class="fa fa-lg fa-user"></i></a>
+					</li>
+				</ul>
+			</div>
+		</header>
+	</template>
+	<script>
+		(function () {
+			'use strict';
+
+			Polymer({});
+
+		})();
+	</script>
+</polymer-element>
