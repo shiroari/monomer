@@ -1,0 +1,107 @@
+<link rel="import" href="card.html">
+
+<polymer-element name="x-card-list" attributes="name bind">
+	<template>
+		<link rel="stylesheet" href="../../bower_components/fontawesome/css/font-awesome.css">
+		<style type="text/css">
+			:host {
+				width: 100%;
+			}
+			
+			section {
+				background-color: #fff;
+				border: 1px solid #ddd;
+				padding: 20px;
+				margin: 14px;
+			}
+			
+			table {
+				width: 100%;
+				border-spacing: 0;
+			}
+			
+			th,
+			td {
+				text-align: left;
+				padding: 10px;
+			}
+			
+			td.icon {
+				width: 1%;
+			}
+			
+			tbody>tr:nth-of-type(2n+1) {
+				background-color: #f3f3f3;
+			}
+			
+			ul.bar {
+				margin: 0;
+				padding: 0;
+				list-style-type: none;
+			}
+		</style>
+		<section>
+			<x-card-header name="{{name}}"></x-card-header>
+			<ul class="actions bar">
+				<content select="x-card-action"></content>
+			</ul>
+			<table>
+				<thead>
+					<tr>
+						<template repeat="{{column in columns}}">
+							<th>{{column.text}}</th>
+						</template>
+					</tr>
+				</thead>
+				<tbody>
+					<template repeat="{{row in rows}}">
+						<tr>
+							<template repeat="{{column, index in columns}}">
+								<template if="{{column.icon !== null}}">
+									<td class="icon">
+										<i class="fa {{column.icon}}"></i>
+									</td>
+								</template>
+								<template if="{{column.icon === null}}">
+									<td>{{row[index]}}</td>
+								</template>
+							</template>
+						</tr>
+					</template>
+				</tbody>
+			</table>
+		</section>
+	</template>
+	<script>
+		(function () {
+			'use strict';
+
+			Polymer({
+				ready: function () {
+					var model = this;
+					model.columns = [];
+					model.rows = eval(this.getAttribute('bind'));
+					this.querySelectorAll('x-column').array().forEach(function (c) {
+						model.columns.push({
+							icon: c.getAttribute('icon') || null,
+							text: c.textContent
+						});
+					});
+				}
+			});
+		})();
+	</script>
+</polymer-element>
+
+<polymer-element name="x-column" attributes="type">
+	<script>
+		(function () {
+			'use strict';
+
+			Polymer({
+
+			});
+
+		})();
+	</script>
+</polymer-element>

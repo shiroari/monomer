@@ -1,0 +1,48 @@
+<x-header></x-header>
+<x-tabs>
+	<x-tab name="Проект" view="p1" active></x-tab>
+	<x-tab name="История" view="p2"></x-tab>
+</x-tabs>
+<x-view id="p1">
+	<x-card-group>
+		<x-card-props name="Свойства" bind="props">
+			<x-card-action name="Изменить"></x-card-action>
+		</x-card-props>
+		<x-card-list name="Операторы" bind="agents">
+			<x-card-action name="Добавить" /></x-card-action>
+			<x-column icon="fa-user"></x-column>
+			<x-column>Имя</x-column>
+			<x-column>Отдел</x-column>
+		</x-card-list>
+	</x-card-group>
+	<x-card-list name="Таблица" bind="list">
+		<x-column>Тип</x-column>
+		<x-column>Название</x-column>
+		<x-column>Дата создания</x-column>
+		<x-column>Дата изменения</x-column>
+		<x-column icon="fa-arrows-v"></x-column>		
+		<x-column icon="fa-times"></x-column>
+	</x-card-list>
+</x-view>
+<x-view id="p2">
+	<x-card-group>
+		<x-card-list name="Операторы" bind="agents">
+			<x-card-action name="Добавить" /></x-card-action>
+			<x-column icon="fa-user"></x-column>
+			<x-column>Имя</x-column>
+			<x-column>Отдел</x-column>			
+			<x-column icon="fa-times"></x-column>
+			<x-column icon="fa-arrows-v"></x-column>			
+		</x-card-list>
+		<x-card-list name="Элементы" bind="rules">
+			<x-card-action name="Добавить" /></x-card-action>			
+			<x-column icon="fa-ellipsis"></x-column>
+			<x-column icon="fa-group"></x-column>					
+			<x-column>Название</x-column>
+		</x-card-list>
+	</x-card-group>
+	<x-card-list name="История" bind="hist">
+		<x-column>Дата</x-column>
+		<x-column>Комментарий</x-column>
+	</x-card-list>
+</x-view>
