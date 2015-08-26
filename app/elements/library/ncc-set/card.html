@@ -1,102 +1,104 @@
-<polymer-element name="x-card-header" attributes="name">
-	<template>
-		<style type="text/css">
-			.card-header {
-				color: #f49237;
-				text-transform: uppercase;
-				font-weight: 700;
-				font-size: 14px;
-				width: 100%;
-				height: 30px;
-				border-bottom: 1px solid #ddd;
-				margin-bottom: 6px;
-			}
-		</style>
-		<div>
-			<div class="card-header">
-				{{name}}
-			</div>
-		</div>
-	</template>
-	<script>
-		(function() {
-			'use strict';
+<dom-module name="x-card-header" attributes="name">
+  <style>
+    .card-header {
+      color: var(--header-text-color);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 14px;
+      width: 100%;
+      height: 30px;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 6px;
+    }
+  </style>
+  <template>
+    <div>
+      <div class="card-header">{{name}}</div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'x-card-header',
+      properties: {
+        name: {
+          type: String
+        }
+      }
+    });
+  </script>
+</dom-module>
 
-			Polymer({
-
-			});
-
-		})();
-	</script>
-</polymer-element>
-
-<polymer-element name="x-card-action" attributes="name">
-	<template>
-		<style type="text/css">
-			li>a {
-				color: #666;
-				background-color: #f3f3f3;
-				display: inline-block;
-				text-transform: initial;
-				font-size: 11px;
-				line-height: 1.6em;
-				font-weight: 600;
-				text-decoration: none;
-				border-radius: 3px;
-				padding: 3px 8px;
-				border: 1px solid #ddd;
-				margin-right: 2px;
-			}
-			li>a:hover {
-				color: #fff;
-				background-color: #f49237;
-				border: 1px solid #f49237;
-				text-decoration: none;
-			}
-			li {
-				display: inline-block;
-			}
-		</style>
-		<li>
-			<a href="javascript:void(0)" on-click="{{onactivate}}">{{name}}</a>
-		</li>
-		<core-overlay id="dlg" backdrop transition="core-transition-top">
-			<style no-shim>
-				.dlg {
-					box-sizing: border-box;
-					overflow: hidden;
-					background: white;
-					padding: 20px 32px;
-					outline: 1px solid rgba(0, 0, 0, 0.2);
-					box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-				}
-				h2 {
-					margin: 0;
-				}
-				div.dlg>div {
-					margin: 20px auto;
-				}
-				button {
-					margin: 10px auto;
-				}
-			</style>
-			<div class="dlg">
-				<h2>Упс...</h2>
-				<div>Не нажимай меня!</div>
-				<button core-overlay-toggle>Отмена</button>
-			</div>
-		</core-overlay>
-	</template>
-	<script>
-		(function() {
-			'use strict';
-
-			Polymer({
-				onactivate: function(event, detail, sender) {
-					this.$.dlg.toggle();
-				}
-			});
-
-		})();
-	</script>
-</polymer-element>
+<dom-module name="x-card-action" attributes="name">
+  <style>
+    
+    li {
+      display: inline-block;
+    }
+    
+    .btn {
+      color: #666;
+      background-color: #f3f3f3;
+      display: inline-block;
+      text-transform: initial;
+      font-size: 11px;
+      line-height: 1.6em;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 3px;
+      padding: 3px 8px;
+      border: 1px solid #ddd;
+      margin-right: 2px;
+    }
+    
+    .btn:hover {
+      color: #fff;
+      background-color: var(--highlight-color);
+      border-color: var(--highlight-color);
+    }
+  </style>
+  <template>
+    <li>
+      <a href="#" class="btn" on-click="onActivate">{{name}}</a>
+    </li>
+    <!--
+    <core-overlay id="dlg" backdrop transition="core-transition-top">
+      <style no-shim>
+        .dlg {
+          box-sizing: border-box;
+          overflow: hidden;
+          background: white;
+          padding: 20px 32px;
+          outline: 1px solid rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        h2 {
+          margin: 0;
+        }
+        
+        div.dlg>div {
+          margin: 20px auto;
+        }
+        
+        button {
+          margin: 10px auto;
+        }
+      </style>
+      <div class="dlg">
+        <h2>Упс...</h2>
+        <div>Не нажимай меня!</div>
+        <button core-overlay-toggle>Отмена</button>
+      </div>
+    </core-overlay>
+    -->
+  </template>
+  <script>
+    Polymer({
+      is: 'x-card-action',
+      onActivate: function (event) {
+        event.preventDefault();
+        this.$.dlg.toggle();
+      }
+    });
+  </script>
+</dom-module>

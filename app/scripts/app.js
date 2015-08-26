@@ -1,17 +1,52 @@
-(function (document) {
-	'use strict';
+(function () {
 
-	document.getElementById('update').addEventListener('click', function () {
+  $('#user_view').val(localStorage.getItem('user_view'));
+  $('#user_data').val(localStorage.getItem('user_data'));
 
-		var preview = document.getElementById('preview'),
-			content = document.getElementById('content').value;
+  var fn = {};
 
+  fn.updateTabs = function () {
 
-		preview.contentDocument.getElementById('content').innerHTML = content;
-		
-	});
+    var active = $('.tabs>li.active');
 
+    active.parent().css('border-color', active.css('background-color'));
 
-	// wrap document so it plays nice with other libraries
-	// http://www.polymer-project.org/platform/shadow-dom.html#wrappers
-})(wrap(document));
+    $('.tab-view').removeClass('active')
+    $('#' + active.data('view')).addClass('active');
+
+  };
+
+  /**/
+
+  $('.tab>a').click(function (e) {
+
+    $('.tabs>li').removeClass('active');
+    $(e.currentTarget).parent().addClass('active');
+
+    fn.updateTabs();
+
+  });
+
+  $('#run').click(function () {
+
+    var view = $('#preview');
+    var doc = view[0].contentDocument;
+    var win = view[0].contentWindow;
+    var userView = $('#user_view');
+    var userData = $('#user_data');
+
+    localStorage.setItem('user_view', userView.val());
+    localStorage.setItem('user_data', userData.val());
+
+    win.eval(userData.val());
+    
+    doc.body.innerHTML = userView.val();
+    doc.dispatchEvent(new Event('WebComponentsReady'));
+
+  });
+
+  /**/
+
+  fn.updateTabs();
+
+})();

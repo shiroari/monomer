@@ -1,95 +1,90 @@
-<polymer-element name="x-header" attributes="">
-	<template>
-		<link rel="stylesheet" href="../../bower_components/fontawesome/css/font-awesome.css">
-		<style type="text/css">
-			header {
-				background-color: #fff;
-				line-height: 40px;
-				border-bottom: 2px solid #ddd;
-			}
-			
-			header>div {
-				margin-left: 40px;
-				margin-right: 40px;
-			}
-			
-			a {
-				color: #f49237;
-				text-decoration: none;
-			}
-			
-			ul.bar {
-				margin: 0;
-				padding: 0;
-				list-style-type: none;
-			}
-			
-			ul.bar>li {
-				display: inline-block;
-			}
-			
-			ul.logo {
-				padding: 0 10px;
-			}
-			
-			ul.navmenu {
-				padding: 0 10px;
-			}
-			
-			ul.breadcrums>li {
-				margin: 0;
-			}
-			
-			ul.breadcrumbs>li>a:after {
-				content: "»";
-				margin: 0 0px;
-			}
-			
-			ul.breadcrumbs>li>a:last-child:after {
-				content: "";
-			}
-			
-			ul.breadcrumbs>li>a:before {
-				content: "›";
-				color: #c4c4c4;
-				margin: 0 6px;
-			}
-		</style>
-		<header>
-			<div horizontal layout>
-				<ul class="bar logo">
-					<li>
-						<a href="javascript:void(0)"><i class="fa fa-lg fa-circle"></i></a>
-					</li>
-				</ul>
-				<ul class="bar breadcrumbs" flex>
-					<li>
-						<a href="javascript:void(0)">Root</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">Branch</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">Leaf</a>
-					</li>
-				</ul>
-				<ul class="bar navmenu">
-					<li>
-						<a href="javascript:void(0)"><i class="fa fa-lg fa-search"></i></a>
-					</li>
-					<li>
-						<a href="javascript:void(0)"><i class="fa fa-lg fa-user"></i></a>
-					</li>
-				</ul>
-			</div>
-		</header>
-	</template>
-	<script>
-		(function () {
-			'use strict';
-
-			Polymer({});
-
-		})();
-	</script>
-</polymer-element>
+<dom-module name="x-header" attributes="">
+  <link rel="import" type="css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <style>
+    
+    header {
+      background-color: #fff;
+      line-height: 60px;
+      border-bottom: 2px solid #ddd;
+    }
+    
+    header>div {
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+    
+    a {
+      color: var(--highlight-text-color);
+      text-decoration: none;
+    }
+    
+    .logo {
+      margin-left: 20px;
+      margin-right: 6px;
+      display: inline-block;
+    }
+    
+    .navmenu {
+      margin-right: 20px !important;
+      float: right;
+    }
+    
+    .navmenu-item>a {
+      padding: 0 4px;
+    }
+    
+    .breadcrumbs {
+      display: inline-block;
+    }
+    
+    .crumb {
+      font-size: 12px;
+      font-weight: bold;
+      margin: 0;
+    }
+    
+    .crumb>a:after {
+      content: "•";
+      color: #c4c4c4;
+      margin: 0 2px 0 6px;
+    }
+    
+    .crumb:last-child>a:after {
+      content: "";
+    }
+    
+  </style>
+  <template>
+    <header>
+      <div class="wrapper" horizontal layout>
+        <div class="logo">
+          <a href="#"><i class="fa fa-lg fa-tv"></i></a>
+        </div>
+        <ul class="bar breadcrumbs" flex>
+          <li class="crumb">
+            <a href="#">Компания</a>
+          </li>
+          <li class="crumb">
+            <a href="#">Партнер</a>
+          </li>
+          <li class="crumb">
+            <a href="#">Обработка звонков</a>
+          </li>
+        </ul>
+        <ul class="bar navmenu">
+          <li class="navmenu-item">
+            <a href="#"><i class="fa fa-lg fa-search"></i></a>
+          </li>
+          <li class="navmenu-item">
+            <a href="#"><i class="fa fa-lg fa-user"></i></a>
+          </li>
+        </ul>
+      </div>
+    </header>
+  </template>
+  <script>
+    Polymer({
+      is: "x-header"
+    });
+  </script>
+</dom-module>

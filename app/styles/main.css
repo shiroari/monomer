@@ -1,7 +1,8 @@
 body {
+  font-size: 14px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #444;
-	background: #e5e5e5;
+	background-color: #fff;
 	margin: 0;
 }
 
@@ -9,46 +10,30 @@ a {
 	text-decoration: none;
 }
 
-body,
-html {
-	height: 100%;
-}
-
-.wrapper {
-	height: 100%;
+html, body {
 	width: 100%;
-	display: table;
-}
-
-.separator {
-	background-color: #f3f3f3;
 	height: 100%;
-	width: 6px;
-	display: table-cell;
 }
 
 .pane {
-	height: 100%;
-	display: table-cell;
-	border: 1px solid #ddd;
+	
 }
 
-.editor {
-	width: 35%;
+.sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+  width: 580px;  
 }
 
-.content__wrapper {
-	width: 100%;
-	height: 100%;	
-	padding-bottom: 40px;
-	margin-bottom: -40px;
-	box-sizing: border-box;
-}
-
-#content {
-	width: 100%;
-	height: 100%;
-	box-sizing: border-box;
+.view {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+  left: 0;
+	right: 600px;
+  border-right: 4px solid #f1f1f1;
 }
 
 #preview {
@@ -59,6 +44,99 @@ html {
 	margin-bottom: -1px;
 }
 
-form {
+/* tabs */
+
+.tabs {
+	margin: 0;
+  padding: 18px 0 0 0;
+	list-style: none;
+  border-bottom: 4px solid mediumpurple;
+}
+
+.tabs>li {
+  display: inline-block;
+}
+
+.tab>a {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+	padding: 4px 32px 0;
+  line-height: 28px;
+  display: inline-block;
+}
+
+.tab.active>a {
+  text-decoration: underline;
+} 
+
+.tab_view {
+  background-color: tomato;  
+}
+
+.tab_data {
+  background-color: mediumpurple;  
+}
+
+.tab-view {
+	position: absolute;
+	top: 54px;
+	bottom: 0;
+  left: 0;
+	right: 0;
+  display: none;
+}
+
+.tab-view.active {
+  display: block;
+}
+
+.tab-view>form {
+  width: 100%;
+  height: 100%;
+}
+
+.tabs-menu {
+  float: right;
+  margin: 18px 12px 0 0;
+  padding: 2px 0;
+}
+
+.tabs-menu>a {
+	padding: 0 12px;
+  color: #aaa;
+  border: 2px solid #aaa;
+  font-size: 11px;
+  line-height: 18px;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: color .5s, border-color .5s;
+  display: inline-block;
+}
+
+.tabs-menu>a:hover {
+  color: #444;
+  border-color: #444;
+}
+
+/* */
+
+.editor {
+  font-size: 12px;
+  font-family: monospace;  
+  white-space: pre;
+  word-wrap: normal;
+  overflow-x: auto;
+	width: 100%;
 	height: 100%;
+	border: 0;
+	padding: 10px;
+	resize: none;
+  color: #444;
+	box-sizing: border-box;  
+  background-color: #fff;  
+}
+
+.editor:focus {
+    outline: 0;
 }

@@ -2,44 +2,37 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Preview</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Preview</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-	<!-- build:css styles/main.css -->
-	<link rel="stylesheet" href="styles/main.css">
-	<!-- endbuild-->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-	<script src="bower_components/platform/platform.js"></script>
-
-	<!-- build:vulcanized elements/elements.vulcanized.html -->
-	<!--link rel="import" href="elements/elements.html">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/preview.css">
   <!-- endbuild-->
 
-	<link rel="import" href="elements/ncc.html">
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 
-	<link id="body" rel="import" href="view/body.html">
+  <script src="scripts/polymer-init.js"></script>
+
+  <!-- build:vulcanized elements/elements.vulcanized.html -->
+  <!--link rel="import" href="elements/elements.html">
+  <!-- endbuild-->
+
+  <link rel="import" href="elements/ncc.html">
+
+  <!-- app -->
+
+  <script src="scripts/data.js"></script>
+  <link id="content" rel="import" href="view/body.html">
 
 </head>
 
 <body unresolved>
-
-	<script>
-		(function () {
-			var link = document.querySelector('link[id="body"]'),
-				body = link.import.firstChild;
-			document.body.appendChild(body.cloneNode(true));
-		})()
-	</script>
-
-	<script src="scripts/data.js"></script>
-
-	<!-- build:js scripts/preview.js -->
-	<script src="scripts/preview.js"></script>
-	<!-- endbuild-->
+  <script src="scripts/preview.js"></script>
 </body>
 
 </html>
