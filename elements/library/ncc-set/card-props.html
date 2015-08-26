@@ -1,72 +1,87 @@
 <link rel="import" href="card.html">
 
-<polymer-element name="x-card-props" attributes="name bind">
-	<template>
-		<style type="text/css">
-			:host {
-				width: 100%;
-			}
-			
-			section {
-				background-color: #fff;
-				border: 1px solid #ddd;
-				padding: 20px;
-				margin: 14px;
-			}
-			
-			th {
-				white-space: nowrap;
-			}
-			
-			table {
-				width: 100%;
-			}
-			
-			th {
-				width: 30%;
-			}
-			
-			td,
-			th {
-				text-align: left;
-				padding: 10px;
-			}
-			
-			tr:nth-of-type(2n) {
-				background-color: #f3f3f3;
-			}
-			
-			ul.bar {
-				margin: 0;
-				padding: 0;
-				list-style-type: none;
-			}
-		</style>
-		<section>
-			<x-card-header name="{{name}}"></x-card-header>
-			<ul class="actions bar">
-				<shadow></shadow>
-			</ul>
-			<table>
-				<template repeat="{{prop in props}}">
-					<tr>
-						<th>{{prop.name}}</th>
-						<td>{{prop.value}}</td>
-					</tr>
-				</template>
-			</table>
-		</section>
-	</template>
-	<script>
-		(function () {
-			'use strict';
+<dom-module name="x-card-props" attributes="name bind">
+  <style>
+    :host {
+      width: 100%;
+    }
+    
+    table {
+      width: 100%;
+      border-spacing: 0;
+    }
+    
+    th {
+      white-space: nowrap;
+    }
+    
+    th {
+      width: 30%;
+    }
+    
+    td,
+    th {
+      text-align: left;
+      padding: 10px;
+    }
+    
+    tr:nth-of-type(2n) {
+      background-color: #f3f3f3;
+    }
+  </style>
+  <template>
+    <section class="card">
+      <x-card-header name="{{name}}"></x-card-header>
+      <ul class="actions bar">
+        <content select="x-card-action"></content>
+      </ul>
+      <table>
+        <template is="dom-repeat" items="{{props}}">
+          <tr>
+            <th>[[_propertyName(index)]]</th>
+            <td>[[_propertyValue(index)]]</td>
+          </tr>
+        </template>
+      </table>
+    </section>
+  </template>
+  <script>
+    Polymer({
 
-			Polymer({
-				ready: function () {
-					this.props = eval(this.getAttribute('bind'));
-				}
-			});
+      is: 'x-card-props',
 
-		})();
-	</script>
-</polymer-element>
+      ready: function () {
+        
+        this.src = window.eval(this.getAttribute('bind'));
+        this.props = [];
+
+        var props = Polymer.dom(this).querySelectorAll('x-card-prop');
+        for (var i = 0; i < props.length; i++) {
+          this.props.push({
+            name: props[i].getAttribute('name'),
+            path: props[i].textContent
+          });
+        }
+      },
+
+      _propertyName: function (index) {
+        return this.props[index].name;
+      },
+
+      _propertyValue: function (index) {
+        return this.src[this.props[index].path];
+      }
+    });
+  </script>
+</dom-module>
+
+<dom-module name="x-card-prop" attributes="name">
+  <template>
+    <content></content>
+  </template>
+  <script>
+    Polymer({
+      is: 'x-card-prop'
+    });
+  </script>
+</dom-module>

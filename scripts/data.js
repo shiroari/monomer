@@ -1,14 +1,7 @@
-var icon = function(name) {
-	return document.createTextNode('1111'); //'<i class="fa ' + name + '"></i>';
+var props = {
+	name: 'Мой проект',
+	state: 'Активный'
 };
-
-var props = [{
-	name: 'Название',
-	value: 'Мой проект'
-}, {
-	name: 'Состояние',
-	value: 'Активный'
-}];
 
 var agents = [
 	['','Иванов И.И.', 'Первый'],
@@ -30,7 +23,7 @@ var hist = [
 ];
 
 var rules = [
-	['','','Первый'],
-	['','','Второй'],
-	['','','Третий']
+	['','Первый'],
+	['','Второй'],
+	['','Третий']
 ]

@@ -2,43 +2,54 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Polymer WebApp</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-	<!-- build:css styles/main.css -->
-	<link rel="stylesheet" href="styles/main.css">
-	<!-- endbuild-->
-
-	<script src="bower_components/platform/platform.js"></script>
-
-	<link rel="import" href="elements/app.html">
-
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Polymer WebApp</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild-->
 </head>
 
 <body>
+  <div class="pane sidebar">
+    <div>
+      <div class="tabs-menu">
+        <a href="javascript:void(0);" id="run">Preview</a> 
+      </div>
+      <ul class='tabs'>
+        <li class='tab tab_view active' data-view='tab_view_view'>
+          <a href="#">View</a>
+        </li>
+        <li class='tab tab_data' data-view='tab_view_data'>
+          <a href="#">Data</a>
+        </li>
+      </ul>
+    </div>
+    <div id="tab_view_view" class="tab-view">
+      <form>
+        <textarea id="user_view" class="editor"></textarea>
+      </form>
+    </div>
+    <div id="tab_view_data" class="tab-view">
+      <form>
+        <textarea id="user_data" class="editor"></textarea>
+      </form>
+    </div>
+  </div>
+  <div class='pane view'>
+    <iframe id='preview' src='view.html'></iframe>
+  </div>
 
-	<div class="wrapper">
-		<div class="pane editor">
-			<form>
-				<div class="content__wrapper">
-					<textarea id="content"></textarea>
-				</div>
-				<button id="update" type="button">Preview</button>
-			</form>
-		</div>
-		<div class='separator'></div>
-		<div class='pane view'>
-			<iframe id='preview' src='preview2.html'></iframe>
-		</div>
-	</div>
+  <!-- scripts -->
 
-	<!-- build:js scripts/app.js -->
-	<script src="scripts/app.js"></script>
-	<!-- endbuild-->
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+  
+  <!-- build:js scripts/app.js -->
+  <script src="scripts/app.js"></script>
+  <!-- endbuild-->
+  
 </body>
 
 </html>

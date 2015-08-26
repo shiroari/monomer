@@ -1,0 +1,46 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic);
+
+:root {
+  --text-color: #444;
+  --header-text-color: #f49237;
+  --highlight-color: #f49237;
+  --highlight-text-color: #f49237;
+  --highlight-invert-color: #fff;
+}
+
+body {
+  font-size: 14px;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+  background-color: #f1f1f1;
+  margin: 0;
+}
+
+*::shadow .wrapper {
+  margin: 0 auto;
+  max-width: 1024px;
+}
+
+*::shadow .card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 14px;
+}
+
+/*
+body /deep/ a {
+  color: #f49237;
+  text-decoration: none;
+}
+*/
+
+body /deep/ .bar {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+body /deep/ .bar>li {
+  display: inline-block;
+}

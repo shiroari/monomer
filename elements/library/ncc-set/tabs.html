@@ -1,115 +1,104 @@
 <link rel="import" href="view.html">
 
-<polymer-element name="x-tabs" attributes="">
-	<template>
-		<style type="text/css">
-			ul.bar {
-				margin: 0;
-				padding: 0;
-				list-style-type: none;
-			}
-			
-			ul.bar>li {
-				display: inline-block;
-			}
-			
-			ul.tabs {
-				margin: 10px 16px;
-				display: inline-block;
-			}
-			
-			ul.tabs>li>a {
-				text-decoration: none;
-				color: #f49237;
-				border-bottom: 3px solid transparent;
-				font-weight: 700;
-				padding: 6px;
-			}
-			
-			ul.tabs>li.active>a {
-				border-bottom: 3px solid #f49237;
-			}
-			
-			.wrapper {
-				margin: 0 auto;
-				max-width: 1024px;
-			}
-		</style>
-		<div class="wrapper">
-			<ul class="bar tabs">
-				<template repeat="{{tab, index in tabs}}">
-					<li class="{{ { active: index === activeTabIndex } | tokenList }}">
-						<a href="{{tab.link}}" on-click="{{onactivate}}" data-index="{{index}}">{{tab.name}}</a>
-					</li>
-				</template>
-			</ul>
-		</div>
-	</template>
-	<script>
-		(function () {
-			'use strict';
+<dom-module name="x-tabs">
+  <style>
+    .tabs {
+      margin: 10px 16px !important;
+    }
+  </style>
+  <template>
+    <div class="wrapper">
+      <ul class="bar tabs">
+        <content select="x-tab"></content>
+      </ul>
+    </div>
+  </template>
+  <script>
+    Polymer({
 
-			Polymer({
+      is: "x-tabs"
 
-				onactivate: function (event, detail, sender) {
+    });
+  </script>
+</dom-module>
 
-					var strIndex = sender.getAttribute('data-index'),
-						index = parseInt(strIndex),
-						view = this.tabs[index].view;
+<dom-module name="x-tab" attributes="name view active">
+  <style>
+    li {
+      display: inline-block;
+    }
+    
+    li>a {
+      color: var(--highlight-text-color);
+      border-bottom: 3px solid transparent;
+      font-weight: 700;
+      padding: 6px;
+      text-decoration: none;      
+    }
+    
+    li.active>a {
+      border-bottom: 3px solid var(--highlight-color);
+    }
+  </style>
+  <template>
+    <li class$="[[getTabClass(active)]]">
+      <a href="#" on-click="onActivate">{{name}}</a>
+    </li>
+  </template>
+  <script>
+    Polymer({
 
-					this.activeTabIndex = index;
-					this.updateViews(view);
-				},
+      is: "x-tab",
 
-				updateViews: function (view) {
+      properties: {
+        active: {
+          type: Boolean,
+          value: false
+        },
+        view: {
+          type: String,
+          value: ""
+        }        
+      },
 
-					document.querySelectorAll('x-view').array().forEach(function (c) {
-						c.style.display = (c.id === view) ? 'block' : 'none';
-					});
-				},
+      getTabClass: function (active) {
+        return active ? "active" : "";
+      },
 
-				ready: function () {
+      onActivate: function (event) {
+        event.preventDefault();
+        var tabs = document.querySelectorAll('x-tab');
+        for (var i = 0; i < tabs.length; i++) {
+          tabs[i].deselect();
+        }
+        this.select();
+      },
 
-					var model = this;
+      deselect: function () {
+        this.$$('li').className = "";
+      },
 
-					model.activeTabIndex = 0;
-					model.tabs = [];
+      select: function () {
+        this.$$('li').className = "active";
+        var views = document.querySelectorAll('x-view');
+        for (var i = 0; i < views.length; i++) {
+          views[i].style.display =
+            (views[i].id === this.view) ? 'block' : 'none';
+        }
+      },
 
-					this.children.array().forEach(function (c) {
-						model.tabs.push({
-							name: c.getAttribute('name'),
-							view: c.getAttribute('view'),
-							link: '#'
-						});
-					});
+      ready: function () {
+        
+        var self = this;
 
-					this.updateViews(model.tabs[model.activeTabIndex].view);
-				}
-			});
+        if (this.active) {
+          document.addEventListener('WebComponentsReady', function () {
+            self.select();
+          });
+        }
 
-		})();
-	</script>
-</polymer-element>
+      }
 
-<polymer-element name="x-tab" attributes="name view active">
-	<template>
-		<style type="text/css">
-			div {
-				padding: 20px;
-			}
-		</style>
-		<div>
-			<shadow></shadow>
-		</div>
-	</template>
-	<script>
-		(function () {
-			'use strict';
-
-			Polymer({
-
-			});
-
-		})();
-	</script>
-</polymer-element>
+    });
+  </script>
+</dom-module>

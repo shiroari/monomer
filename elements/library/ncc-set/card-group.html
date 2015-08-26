@@ -1,23 +1,18 @@
-<polymer-element name="x-card-group" attributes="">
-	<template>
-		<style type="text/css">
-			div {
-				display: flex;
-				flex-direction: row;
-			}
-		</style>
-		<div>
-			<shadow></shadow>
-		</div>
-	</template>
-	<script>
-		(function () {
-			'use strict';
-
-			Polymer({
-
-			});
-
-		})();
-	</script>
-</polymer-element>
+<dom-module name="x-card-group">
+  <style>
+    div {
+      display: flex;
+      flex-direction: row;
+    }
+  </style>
+  <template>
+    <div>
+      <content></content>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'x-card-group'
+    });
+  </script>
+</dom-module>

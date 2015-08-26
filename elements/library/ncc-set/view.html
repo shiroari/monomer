@@ -1,27 +1,17 @@
-<polymer-element name="x-view" attributes="id">
-	<template>
-		<style type="text/css">
-			:host {
-				display: none;
-			}
-			
-			.wrapper {
-				margin: 0 auto;
-				max-width: 1024px;
-			}
-		</style>
-		<div class="wrapper">
-			<content></content>
-		</div>
-	</template>
-	<script>
-		(function () {
-			'use strict';
-
-			Polymer({
-
-			});
-
-		})();
-	</script>
-</polymer-element>
+<dom-module name="x-view" attributes="id">
+  <style type="text/css">
+    :host {
+      display: none;
+    }
+  </style>
+  <template>
+    <div class="wrapper">
+      <content></content>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'x-view'
+    });
+  </script>
+</dom-module>
