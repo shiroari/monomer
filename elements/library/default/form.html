@@ -1,0 +1,179 @@
+<dom-module name="x-form" attributes="name">
+  <style>
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      opacity: 0.8;
+      z-index: 999;
+    }
+    
+    .wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+    }
+    
+    .dialog {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 20px;
+    }
+    
+    .form {
+      width: 30%;
+      min-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+    }
+    
+    .title {
+      color: var(--header-text-color);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 14px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--header-text-color);
+    }
+    
+    .fields {
+      padding: 0;
+      margin: 10px 0 0;
+      list-style-type: none;
+    }
+  </style>
+  <template>
+    <div class="overlay"></div>
+    <div class="wrapper">
+      <div class="form dialog">
+        <form>
+          <h2 class="title">{{name}}</h2>
+          <ul class="fields">
+            <content select="x-form-field"></content>
+            <content select="x-form-footer"></content>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'x-form',
+      ready: function () {
+
+        var self = this;
+        var buttons = this.querySelectorAll('button');
+
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener('click', function (e) {
+            e.preventDefault();
+            self.toogle();
+          });
+        }
+
+      },
+      toogle: function () {
+        this.hidden = !this.hidden;
+      }
+    });
+  </script>
+</dom-module>
+
+<dom-module name="x-form-field" attributes="name required">
+  <style>
+    li {
+      margin: 10px 0;
+      white-space: nowrap;
+      list-style-type: none;
+    }
+    
+    label {
+      margin-bottom: 4px;
+      display: block;
+      font-weight: bold;
+    }
+    
+    .required:after {
+      content: "*";
+      margin-left: 0.1em;
+      color: var(--header-text-color);
+    }
+    
+    ::content input[type=text],
+    ::content input[type=password],
+    ::content textarea {
+      color: #555;
+      width: 280px;
+      margin: 0;
+      padding: 4px 8px;
+      box-sizing: border-box;
+      border-radius: 3px;
+      border: 1px solid #919191;
+      box-shadow: inset 1px 0 3px rgba(0, 0, 0, 0.14);
+      background: #fff;
+    }
+  </style>
+  <template>
+    <li>
+      <label class$="[[_fieldClass(required)]]">{{name}}</label>
+      <content></content>
+    </li>
+  </template>
+  <script>
+    Polymer({
+      is: 'x-form-field',
+      properties: {
+        name: String,
+        required: {
+          type: Boolean,
+          value: false
+        }
+      },
+      _fieldClass: function (required) {
+        return required ? "required" : "";
+      }
+    });
+  </script>
+</dom-module>
+
+<dom-module name="x-form-footer">
+  <style>
+    .footer {
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+      margin-top: 20px;
+    }
+    
+    ::content button {
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 2px 0 0;
+    }
+    
+    ::content .primary {
+      background-color: #f49237;
+    }
+  </style>
+  <template>
+    <li class="footer">
+      <content></content>
+    </li>
+  </template>
+  <script>
+    Polymer({
+      is: 'x-form-footer'
+    });
+  </script>
+</dom-module>
