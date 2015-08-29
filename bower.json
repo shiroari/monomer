@@ -1,15 +1,14 @@
 {
-  "name": "ncc-ui",
+  "name": "monomer",
   "version": "0.0.1",
   "dependencies": {
     "polymer": "~1.1.1"
   },
-  "devDependencies": {},
   "authors": [
-    "Sukhanov Stas <ssukhanov@naumen.ru>"
+    "stas.sukhanov@gmail.com"
   ],
   "license": "MIT",
-  "description": "Naumen Contact Center UI components set",
+  "description": "Edit and preview your html page powered by Polymer",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -18,8 +17,5 @@
     "test",
     "tests"
   ],
-  "moduleType": [
-    "amd",
-    "node"
-  ]
+  "homepage": "https://github.com/shiroari/monomer"
 }
