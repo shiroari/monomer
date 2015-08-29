@@ -28,9 +28,8 @@
   </script>
 </dom-module>
 
-<dom-module name="x-card-action" attributes="name">
+<dom-module name="x-card-action" attributes="name form">
   <style>
-    
     li {
       display: inline-block;
     }
@@ -60,44 +59,24 @@
     <li>
       <a href="#" class="btn" on-click="onActivate">{{name}}</a>
     </li>
-    <!--
-    <core-overlay id="dlg" backdrop transition="core-transition-top">
-      <style no-shim>
-        .dlg {
-          box-sizing: border-box;
-          overflow: hidden;
-          background: white;
-          padding: 20px 32px;
-          outline: 1px solid rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-        }
-        
-        h2 {
-          margin: 0;
-        }
-        
-        div.dlg>div {
-          margin: 20px auto;
-        }
-        
-        button {
-          margin: 10px auto;
-        }
-      </style>
-      <div class="dlg">
-        <h2>Упс...</h2>
-        <div>Не нажимай меня!</div>
-        <button core-overlay-toggle>Отмена</button>
-      </div>
-    </core-overlay>
-    -->
   </template>
   <script>
     Polymer({
       is: 'x-card-action',
+      properties: {
+        name: {
+          type: String,
+          value: ''
+        },
+        form: {
+          type: String,
+          value: ''
+        }
+      },
       onActivate: function (event) {
         event.preventDefault();
-        this.$.dlg.toggle();
+        var form = document.querySelector('x-form[id=' + this.form + ']');
+        form.toogle();
       }
     });
   </script>

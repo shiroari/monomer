@@ -3,15 +3,15 @@
   <x-tab name="Проект" view="p1" active></x-tab>
   <x-tab name="История" view="p2"></x-tab>
 </x-tabs>
-<x-view id="p1">
+<x-view id="p1" hidden>
   <x-card-group>
     <x-card-props name="Свойства" bind="props">
-      <x-card-action name="Изменить"></x-card-action>
+      <x-card-action name="Изменить" form="f1"></x-card-action>
       <x-card-prop name="Название">name</x-card-prop>
       <x-card-prop name="Состояние">state</x-card-prop>
     </x-card-props>
     <x-card-list name="Операторы" bind="agents">
-      <x-card-action name="Добавить" /></x-card-action>
+      <x-card-action name="Добавить" form="f1"/></x-card-action>
       <x-column name="" icon="fa-user"></x-column>
       <x-column name="Имя"></x-column>
       <x-column name="Отдел"></x-column>
@@ -25,17 +25,17 @@
     <x-column name="" icon="fa-times"></x-column>
   </x-card-list>
 </x-view>
-<x-view id="p2">
+<x-view id="p2" hidden>
   <x-card-group>
     <x-card-list name="Операторы" bind="agents">
-      <x-card-action name="Добавить" /></x-card-action>
+      <x-card-action name="Добавить" form="f1"/></x-card-action>
       <x-column name="" icon="fa-user"></x-column>
       <x-column name="Имя"></x-column>
       <x-column name="Отдел"></x-column>
       <x-column name="" icon="fa-times"></x-column>
     </x-card-list>
     <x-card-list name="Элементы" bind="rules">
-      <x-card-action name="Добавить" /></x-card-action>
+      <x-card-action name="Добавить" form="f1"/></x-card-action>
       <x-column name="" icon="fa-group"></x-column>
       <x-column name="Название"></x-column>
     </x-card-list>
@@ -45,3 +45,15 @@
     <x-column name="Комментарий"></x-column>
   </x-card-list>
 </x-view>
+<x-form id="f1" name="Добавление партнера" hidden>
+  <x-form-field name="Название" required>
+    <input type="text" value="Блаблабла"></input>
+  </x-form-field>
+  <x-form-field name="Идентификатор">
+    <input type="text" value="Блаблабла"></input>
+  </x-form-field>
+  <x-form-footer>
+    <button class="primary">Сохранить</button>
+    <button>Отмена</button>
+  </x-form-footer>
+</x-form>
