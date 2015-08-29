@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
+  <link rel="import" href="../elements/default.html">
+</head>
+
+<body>
+  <fixture></fixture>
+  <script>
+    suite('smoke', function () {
+      test('true is true', function () {
+        assert.isTrue(true);
+      });
+      test('custom tags', function () {
+        assert.isNotNull(document.querySelector('fixture'));
+      });
+    });
+  </script>
+</body>
+
+</html>
