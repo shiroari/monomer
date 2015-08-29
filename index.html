@@ -24,6 +24,9 @@
         <li class='tab tab_data' data-view='tab_view_data'>
           <a href="#">Data</a>
         </li>
+        <li class='tab tab_settings' data-view='tab_view_settings'>
+          <a href="#">Settings</a>
+        </li>        
       </ul>
     </div>
     <div id="tab_view_view" class="tab-view">
@@ -36,6 +39,13 @@
         <textarea id="user_data" class="editor"></textarea>
       </form>
     </div>
+    <div id="tab_view_settings" class="tab-view">
+      <form class="user-form">
+        <div>
+          <a id="reset" href="#" class="btn-link">Restore defaults</a>  
+        </div>
+      </form>
+    </div>    
   </div>
   <div class='pane view'>
     <iframe id='preview' src='preview.html'></iframe>

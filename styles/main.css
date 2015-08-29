@@ -70,14 +70,6 @@ html, body {
   text-decoration: underline;
 } 
 
-.tab_view {
-  background-color: tomato;  
-}
-
-.tab_data {
-  background-color: mediumpurple;  
-}
-
 .tab-view {
 	position: absolute;
 	top: 54px;
@@ -117,6 +109,34 @@ html, body {
 .tabs-menu>a:hover {
   color: #444;
   border-color: #444;
+}
+
+/* */
+
+.tab_view {
+  background-color: tomato;  
+}
+
+.tab_data {
+  background-color: mediumpurple;  
+}
+
+.tab_settings {
+  background-color: dodgerblue;
+}
+
+.btn-link {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #444;  
+}
+
+.btn-link:hover {
+  color: tomato;
+}
+
+.user-form>div {
+  padding: 12px 0;
 }
 
 /* */
