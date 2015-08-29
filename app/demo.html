@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Demo</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/preview.css">
+
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+  <script src="scripts/polymer-init.js"></script>
+
+  <link rel="import" href="elements/default.html">
+
+  <script src="scripts/data.js"></script>
+
+</head>
+
+<body unresolved>
+  <x-header></x-header>
+  <x-tabs>
+    <x-tab name="Проект" view="p1" active></x-tab>
+    <x-tab name="История" view="p2"></x-tab>
+  </x-tabs>
+  <x-view id="p1">
+    <x-card-group>
+
+      <!--
+	  <x-card>
+	    <x-card-header title="Свойства"></x-card-header>
+	    <x-card-actions>
+	      <x-card-action title="Изменить"></x-card-action>  
+      </x-card-actions>
+	    <x-card-prop title="Название" bind="props.name"></x-card-prop>
+      <x-card-prop title="Состояние" bind="props.state"></x-card-prop>
+      <x-card-list bind="list">
+        <x-column title="" icon="fa-user"></x-column>
+        <x-column title="Имя"></x-column>
+        <x-column title="Отдел"></x-column>        
+      </x-card-list>
+	  </x-card>
+	  -->
+
+      <x-card-props name="Свойства" bind="props">
+        <x-card-action name="Изменить"></x-card-action>
+        <x-card-prop name="Название">name</x-card-prop>
+        <x-card-prop name="Состояние">state</x-card-prop>
+      </x-card-props>
+      <x-card-list name="Операторы" bind="agents">
+        <x-card-action name="Добавить" /></x-card-action>
+        <x-column name="" icon="fa-user"></x-column>
+        <x-column name="Имя"></x-column>
+        <x-column name="Отдел"></x-column>
+      </x-card-list>
+    </x-card-group>
+    <x-card-list name="Таблица" bind="list">
+      <x-column name="Тип"></x-column>
+      <x-column name="Название"></x-column>
+      <x-column name="Дата создания"></x-column>
+      <x-column name="Дата изменения"></x-column>
+      <x-column name="" icon="fa-times"></x-column>
+    </x-card-list>
+  </x-view>
+  <x-view id="p2">
+    <x-card-group>
+      <x-card-list name="Операторы" bind="agents">
+        <x-card-action name="Добавить" /></x-card-action>
+        <x-column name="" icon="fa-user"></x-column>
+        <x-column name="Имя"></x-column>
+        <x-column name="Отдел"></x-column>
+        <x-column name="" icon="fa-times"></x-column>
+      </x-card-list>
+      <x-card-list name="Элементы" bind="rules">
+        <x-card-action name="Добавить" /></x-card-action>
+        <x-column name="" icon="fa-group"></x-column>
+        <x-column name="Название"></x-column>
+      </x-card-list>
+    </x-card-group>
+    <x-card-list name="История" bind="hist">
+      <x-column name="Дата"></x-column>
+      <x-column name="Комментарий"></x-column>
+    </x-card-list>
+  </x-view>
+</body>
+
+</html>
